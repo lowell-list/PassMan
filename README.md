@@ -45,3 +45,15 @@ App will need:
   - Encrypted text input area
   - Both text inputs may be typed in or copy/pasted, and both have a "Copy"
     button
+
+## Resources
+
+- [Figma Passwords Project](https://www.figma.com/file/c2H8nYWUqOBP4n2QKhCe5H/Passwords?node-id=0%3A1)
+
+- [PassMan GitHub Repo](https://github.com/lowell-list/PassMan)
+
+- [Infinite Red Ignite Repo](https://github.com/infinitered/ignite)
+
+- [Octokit Libary](https://github.com/octokit/octokit.js) - looks promising for GitHub connection
+
+- [Octokit article](https://dev.to/lucis/how-to-push-files-programatically-to-a-repository-using-octokit-with-typescript-1nj0) - how to push files
