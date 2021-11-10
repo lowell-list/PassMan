@@ -14,13 +14,16 @@ App will need:
   - repo name
   - user name
   - branch name
-- master password (entered by user whenever the app is opened)
+- master password
+  - required to decrypt passwords
+  - entered by user whenever the app is opened or the apps's been in the
+    background for over a time limit
 
 ## Features
 
 - Quick search
 - Passwords not visible by default, may be revealed or copied with button click
-- Prompt-to-save if any data has changed
+- Prompt-to-save if any data has changed!
 
 ## Screens
 
@@ -36,3 +39,9 @@ App will need:
 - Settings
   - GitHub Connect Screen
     - inputs for access key, repo name, etc.
+- Message
+  - Easy screen to quickly encrypt / decrypt a simple message
+  - Plain text input area
+  - Encrypted text input area
+  - Both text inputs may be typed in or copy/pasted, and both have a "Copy"
+    button
