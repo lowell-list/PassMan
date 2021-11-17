@@ -12,7 +12,7 @@ import {
   GradientBackground,
 } from "../../components"
 import { NavigatorParamList } from "../../navigators"
-import { color, spacing } from "../../theme"
+import { color, arraySpacing } from "../../theme"
 import { Api } from "../../services/api"
 import { save } from "../../utils/storage"
 export const logoIgnite = require("./logo-ignite.png")
@@ -21,11 +21,11 @@ export const heart = require("./heart.png")
 const FULL: ViewStyle = { flex: 1 }
 const CONTAINER: ViewStyle = {
   backgroundColor: color.transparent,
-  paddingHorizontal: spacing[4],
+  paddingHorizontal: arraySpacing[4],
 }
 const DEMO: ViewStyle = {
-  paddingVertical: spacing[4],
-  paddingHorizontal: spacing[4],
+  paddingVertical: arraySpacing[4],
+  paddingHorizontal: arraySpacing[4],
   backgroundColor: color.palette.deepPurple,
 }
 const BOLD: TextStyle = { fontWeight: "bold" }
@@ -35,8 +35,8 @@ const DEMO_TEXT: TextStyle = {
   letterSpacing: 2,
 }
 const HEADER: TextStyle = {
-  paddingTop: spacing[3],
-  paddingBottom: spacing[5] - 1,
+  paddingTop: arraySpacing[3],
+  paddingBottom: arraySpacing[5] - 1,
   paddingHorizontal: 0,
 }
 const HEADER_TITLE: TextStyle = {
@@ -51,16 +51,16 @@ const TITLE: TextStyle = {
   fontSize: 28,
   lineHeight: 38,
   textAlign: "center",
-  marginBottom: spacing[5],
+  marginBottom: arraySpacing[5],
 }
 const TAGLINE: TextStyle = {
   color: "#BAB6C8",
   fontSize: 15,
   lineHeight: 22,
-  marginBottom: spacing[4] + spacing[1],
+  marginBottom: arraySpacing[4] + arraySpacing[1],
 }
 const IGNITE: ImageStyle = {
-  marginVertical: spacing[6],
+  marginVertical: arraySpacing[6],
   alignSelf: "center",
   width: 180,
   height: 100,
@@ -76,7 +76,7 @@ const LOVE: TextStyle = {
   lineHeight: 22,
 }
 const HEART: ImageStyle = {
-  marginHorizontal: spacing[2],
+  marginHorizontal: arraySpacing[2],
   width: 10,
   height: 10,
   resizeMode: "contain",
@@ -85,7 +85,7 @@ const HINT: TextStyle = {
   color: "#BAB6C8",
   fontSize: 12,
   lineHeight: 15,
-  marginVertical: spacing[2],
+  marginVertical: arraySpacing[2],
 }
 
 const platformCommand = Platform.select({

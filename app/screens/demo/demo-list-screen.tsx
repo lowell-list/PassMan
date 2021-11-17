@@ -3,7 +3,7 @@ import { FlatList, TextStyle, View, ViewStyle, ImageStyle } from "react-native"
 import { StackScreenProps } from "@react-navigation/stack"
 import { observer } from "mobx-react-lite"
 import { Header, Screen, Text, AutoImage as Image, GradientBackground } from "../../components"
-import { color, spacing } from "../../theme"
+import { color, arraySpacing } from "../../theme"
 import { useStores } from "../../models"
 import { NavigatorParamList } from "../../navigators"
 
@@ -14,9 +14,9 @@ const CONTAINER: ViewStyle = {
   backgroundColor: color.transparent,
 }
 const HEADER: TextStyle = {
-  paddingBottom: spacing[5] - 1,
-  paddingHorizontal: spacing[4],
-  paddingTop: spacing[3],
+  paddingBottom: arraySpacing[5] - 1,
+  paddingHorizontal: arraySpacing[4],
+  paddingTop: arraySpacing[3],
 }
 const HEADER_TITLE: TextStyle = {
   fontSize: 12,
@@ -39,7 +39,7 @@ const LIST_TEXT: TextStyle = {
   marginLeft: 10,
 }
 const FLAT_LIST: ViewStyle = {
-  paddingHorizontal: spacing[4],
+  paddingHorizontal: arraySpacing[4],
 }
 
 export const DemoListScreen: FC<StackScreenProps<NavigatorParamList, "demoList">> = observer(

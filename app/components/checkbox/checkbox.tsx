@@ -1,12 +1,12 @@
 import * as React from "react"
 import { TextStyle, TouchableOpacity, View, ViewStyle } from "react-native"
 import { Text } from "../text/text"
-import { color, spacing } from "../../theme"
+import { color, arraySpacing } from "../../theme"
 import { CheckboxProps } from "./checkbox.props"
 
 const ROOT: ViewStyle = {
   flexDirection: "row",
-  paddingVertical: spacing[1],
+  paddingVertical: arraySpacing[1],
   alignSelf: "flex-start",
 }
 
@@ -28,7 +28,7 @@ const FILL: ViewStyle = {
   backgroundColor: color.primary,
 }
 
-const LABEL: TextStyle = { paddingLeft: spacing[2] }
+const LABEL: TextStyle = { paddingLeft: arraySpacing[2] }
 
 export function Checkbox(props: CheckboxProps) {
   const numberOfLines = props.multiline ? 0 : 1

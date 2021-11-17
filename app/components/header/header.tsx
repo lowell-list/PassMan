@@ -4,16 +4,16 @@ import { HeaderProps } from "./header.props"
 import { Button } from "../button/button"
 import { Text } from "../text/text"
 import { Icon } from "../icon/icon"
-import { spacing } from "../../theme"
+import { arraySpacing } from "../../theme"
 import { translate } from "../../i18n/"
 
 // static styles
 const ROOT: ViewStyle = {
   flexDirection: "row",
-  paddingHorizontal: spacing[4],
+  paddingHorizontal: arraySpacing[4],
   alignItems: "center",
-  paddingTop: spacing[5],
-  paddingBottom: spacing[5],
+  paddingTop: arraySpacing[5],
+  paddingBottom: arraySpacing[5],
   justifyContent: "flex-start",
 }
 const TITLE: TextStyle = { textAlign: "center" }
