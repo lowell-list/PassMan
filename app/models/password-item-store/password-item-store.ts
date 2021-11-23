@@ -1,5 +1,10 @@
 import { flow, Instance, SnapshotOut, types } from "mobx-state-tree"
-import { PasswordItem, PasswordItemModel, PasswordItemSnapshot, withEnvironment } from ".."
+import {
+  PasswordItem,
+  PasswordItemModel,
+  PasswordItemSnapshot,
+} from "../password-item/password-item"
+import { withEnvironment } from "../extensions/with-environment"
 
 /**
  * Model description here for TypeScript hints.
@@ -23,10 +28,10 @@ export const PasswordItemStoreModel = types
     loadInitialPasswordItems: flow(function* () {
       const aPasswordItem: PasswordItemSnapshot = {
         id: "1234",
-        name: "My Password",
-        description: "A very cool PW indeed",
-        password: "",
-        notes: "",
+        name: "Amazon Account",
+        description: "All about my Amazon account",
+        password: "the actual PW, should not see this!",
+        notes: "A very cool PW indeed",
       }
       self.savePasswordItems([aPasswordItem])
       __DEV__ && console.tron.log("saving it!")
