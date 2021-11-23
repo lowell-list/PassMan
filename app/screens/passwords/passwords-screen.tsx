@@ -25,7 +25,7 @@ export const PasswordsScreen = observer(function PasswordsScreen() {
 
   useEffect(() => {
     passwordItemStore.loadInitialPasswordItems()
-    console.log("loaded!")
+    __DEV__ && console.tron.log("loaded!")
   }, [])
 
   const passwordItemCount = passwordItemStore.passwordItems.length
