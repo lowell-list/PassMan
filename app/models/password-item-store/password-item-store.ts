@@ -7,6 +7,17 @@ import {
 import { withEnvironment } from "../extensions/with-environment"
 
 /**
+ * Model instance:
+ *  - has properties, like a regular JS object
+ *  - has views (computed values)
+ *  - has actions
+ *
+ * Snapshot: the serialized version of MST models, without all the dynamic
+ *   features like views, and actions. You can think of snapshots as the
+ *   immutable, plain JS object version of your MST model.
+ */
+
+/**
  * Model description here for TypeScript hints.
  */
 export const PasswordItemStoreModel = types
