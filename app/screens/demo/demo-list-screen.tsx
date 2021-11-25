@@ -5,7 +5,7 @@ import { observer } from "mobx-react-lite"
 import { Header, Screen, Text, AutoImage as Image, GradientBackground } from "../../components"
 import { color, arraySpacing } from "../../theme"
 import { useStores } from "../../models"
-import { NavigatorParamList } from "../../navigators"
+import { StackNavigatorParamList } from "../../navigators"
 
 const FULL: ViewStyle = {
   flex: 1,
@@ -42,7 +42,7 @@ const FLAT_LIST: ViewStyle = {
   paddingHorizontal: arraySpacing[4],
 }
 
-export const DemoListScreen: FC<StackScreenProps<NavigatorParamList, "demoList">> = observer(
+export const DemoListScreen: FC<StackScreenProps<StackNavigatorParamList, "demoList">> = observer(
   ({ navigation }) => {
     const goBack = () => navigation.goBack()
 

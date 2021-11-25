@@ -24,25 +24,31 @@ import { navigationRef } from "./navigation-utilities"
  *   https://reactnavigation.org/docs/params/
  *   https://reactnavigation.org/docs/typescript#type-checking-the-navigator
  */
-export type NavigatorParamList = {
+export type StackNavigatorParamList = {
+  demoList: undefined
+  tabs: undefined
+  passwords: undefined
   welcome: undefined
   demo: undefined
-  demoList: undefined
-  passwords: undefined
-  tabs: undefined
 }
 
-// Documentation: https://reactnavigation.org/docs/stack-navigator/
-const Stack = createNativeStackNavigator<NavigatorParamList>()
+// Docs: https://reactnavigation.org/docs/stack-navigator/
+const Stack = createNativeStackNavigator<StackNavigatorParamList>()
 
-const Tab = createBottomTabNavigator()
+// Docs: https://reactnavigation.org/docs/bottom-tab-navigator
+export type TabNavigatorParamList = {
+  passwords: undefined
+  welcome: undefined
+  demo: undefined
+}
+const Tab = createBottomTabNavigator<TabNavigatorParamList>()
 
 function Tabs() {
   return (
     <Tab.Navigator initialRouteName="passwords" screenOptions={{ headerShown: false }}>
-      <Tab.Screen name="passwords" component={PasswordsScreen} />
-      <Tab.Screen name="welcome" component={WelcomeScreen} />
-      <Tab.Screen name="demo" component={DemoScreen} />
+      <Tab.Screen name="passwords" component={PasswordsScreen} options={{ title: "Passwords" }} />
+      <Tab.Screen name="welcome" component={WelcomeScreen} options={{ title: "Settings" }} />
+      <Tab.Screen name="demo" component={DemoScreen} options={{ title: "Message" }} />
     </Tab.Navigator>
   )
 }

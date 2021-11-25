@@ -11,7 +11,7 @@ import {
   AutoImage as Image,
 } from "../../components"
 import { color, arraySpacing, typography } from "../../theme"
-import { NavigatorParamList } from "../../navigators"
+import { StackNavigatorParamList } from "../../navigators"
 
 const bowserLogo = require("./bowser.png")
 
@@ -86,7 +86,7 @@ const FOOTER_CONTENT: ViewStyle = {
   paddingHorizontal: arraySpacing[4],
 }
 
-export const WelcomeScreen: FC<StackScreenProps<NavigatorParamList, "welcome">> = observer(
+export const WelcomeScreen: FC<StackScreenProps<StackNavigatorParamList, "welcome">> = observer(
   ({ navigation }) => {
     const nextScreen = () => navigation.navigate("demo")
 
