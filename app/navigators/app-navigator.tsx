@@ -17,6 +17,7 @@ import {
   WelcomeScreen,
 } from "../screens"
 import { navigationRef } from "./navigation-utilities"
+import { color } from "../theme"
 
 /**
  * This type allows TypeScript to know what routes are defined in this navigator
@@ -52,7 +53,13 @@ const Tab = createBottomTabNavigator<TabNavigatorParamList>()
 
 function Tabs() {
   return (
-    <Tab.Navigator initialRouteName="passwords" screenOptions={{ headerShown: false }}>
+    <Tab.Navigator
+      initialRouteName="passwords"
+      screenOptions={{
+        headerShown: false,
+        tabBarStyle: { backgroundColor: color.palette.offWhite },
+      }}
+    >
       <Tab.Screen name="passwords" component={PasswordsScreen} options={{ title: "Passwords" }} />
       <Tab.Screen name="welcome" component={WelcomeScreen} options={{ title: "Settings" }} />
       <Tab.Screen name="message" component={MessageScreen} options={{ title: "Message" }} />
