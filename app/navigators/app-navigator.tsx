@@ -9,7 +9,13 @@ import { useColorScheme } from "react-native"
 import { NavigationContainer, DefaultTheme, DarkTheme } from "@react-navigation/native"
 import { createNativeStackNavigator } from "@react-navigation/native-stack"
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs"
-import { WelcomeScreen, DemoScreen, DemoListScreen, PasswordsScreen } from "../screens"
+import {
+  DemoListScreen,
+  DemoScreen,
+  MessageScreen,
+  PasswordsScreen,
+  WelcomeScreen,
+} from "../screens"
 import { navigationRef } from "./navigation-utilities"
 
 /**
@@ -38,6 +44,7 @@ const Stack = createNativeStackNavigator<StackNavigatorParamList>()
 // Docs: https://reactnavigation.org/docs/bottom-tab-navigator
 export type TabNavigatorParamList = {
   passwords: undefined
+  message: undefined
   welcome: undefined
   demo: undefined
 }
@@ -48,7 +55,7 @@ function Tabs() {
     <Tab.Navigator initialRouteName="passwords" screenOptions={{ headerShown: false }}>
       <Tab.Screen name="passwords" component={PasswordsScreen} options={{ title: "Passwords" }} />
       <Tab.Screen name="welcome" component={WelcomeScreen} options={{ title: "Settings" }} />
-      <Tab.Screen name="demo" component={DemoScreen} options={{ title: "Message" }} />
+      <Tab.Screen name="message" component={MessageScreen} options={{ title: "Message" }} />
     </Tab.Navigator>
   )
 }
