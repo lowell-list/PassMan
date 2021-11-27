@@ -1,12 +1,12 @@
 import React from "react"
 import { StyleProp, TextInput, TextInputProps, TextStyle, View, ViewStyle } from "react-native"
-import { color, arraySpacing, typography } from "../../theme"
+import { color, typography, spacing } from "../../theme"
 import { translate, TxKeyPath } from "../../i18n"
 import { Text } from "../text/text"
 
 // the base styling for the container
 const CONTAINER: ViewStyle = {
-  paddingVertical: arraySpacing[3],
+  paddingVertical: spacing.small,
 }
 
 // the base styling for the TextInput
@@ -15,7 +15,7 @@ const INPUT: TextStyle = {
   color: color.text,
   minHeight: 44,
   fontSize: 18,
-  backgroundColor: color.palette.white,
+  backgroundColor: color.palette.offWhite,
 }
 
 // currently we have no presets, but that changes quickly when you build your app.

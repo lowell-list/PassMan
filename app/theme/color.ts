@@ -23,7 +23,7 @@ export const color = {
   /**
    * The screen background.
    */
-  background: palette.darkPlum,
+  background: palette.white,
   /**
    * The main tinting color.
    */
@@ -39,7 +39,7 @@ export const color = {
   /**
    * The default color of text in many components.
    */
-  text: palette.white,
+  text: palette.black,
   /**
    * Secondary information.
    */
