@@ -42,7 +42,7 @@ export const MessageScreen = observer(function MessageScreen() {
     <Screen style={ROOT} preset="fixed">
       <View style={{ flexDirection: "column", height: "100%" }}>
         <TextField
-          label="Message"
+          label="Message (plain text)"
           placeholder="Type or paste your message here"
           value={plainText}
           onChangeText={(newPlainText) => {
@@ -64,8 +64,8 @@ export const MessageScreen = observer(function MessageScreen() {
           secureTextEntry={true}
         />
         <TextField
-          label="Encrypted Message"
-          placeholder="Your encrypted message"
+          label="Encrypted Message (AES 256-bit, with salt)"
+          placeholder="Type or paste your encrypted message here"
           value={encryptedText}
           onChangeText={(text) => {
             setAction("decrypt")
@@ -117,7 +117,6 @@ const generateKeyFromPassword = (password: string, salt: string): Uint8Array => 
 const computeEncryptedText = (password: string, plainText: string): string => {
   try {
     const salt = generateRandomString(20)
-    console.log(salt)
     const key = generateKeyFromPassword(password, salt)
     const textBytes = aesjs.utils.utf8.toBytes(plainText)
     const aesCtr = new aesjs.ModeOfOperation.ctr(key)
@@ -133,6 +132,9 @@ const computeEncryptedText = (password: string, plainText: string): string => {
  * Decypt a salt + encrypted bytes (in base 64) and return the plaintext string.
  */
 const computePlainText = (password: string, saltPlusEncryptedBytesBase64: string): string => {
+  if (saltPlusEncryptedBytesBase64.length < 21) {
+    return "error, not long enough"
+  }
   try {
     const salt = saltPlusEncryptedBytesBase64.substring(0, 20)
     const encryptedBytesBase64 = saltPlusEncryptedBytesBase64.substring(20)
