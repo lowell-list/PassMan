@@ -53,25 +53,16 @@ export const MessageScreen = observer(function MessageScreen() {
           inputStyle={{ height: "100%" }}
           multiline={true}
         />
-        <View style={{ flexDirection: "row" }}>
-          <TextField
-            label="Password"
-            placeholder="Password"
-            value={userPassword}
-            onChangeText={(text) => {
-              setUserPassword(text)
-            }}
-            style={{ flex: 1, marginRight: spacing.tiny }}
-            secureTextEntry={true}
-          />
-          <TextField
-            label="Cipher"
-            placeholder="Cipher"
-            value="AES 256-bit"
-            style={{ flex: 1, marginLeft: spacing.tiny }}
-            editable={false}
-          />
-        </View>
+        <TextField
+          label="Password"
+          placeholder="Password"
+          value={userPassword}
+          onChangeText={(text) => {
+            setUserPassword(text)
+          }}
+          style={{ flex: 1, marginRight: spacing.tiny }}
+          secureTextEntry={true}
+        />
         <TextField
           label="Encrypted Message"
           placeholder="Your encrypted message"
