@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import { observer } from "mobx-react-lite"
 import { View, ViewStyle } from "react-native"
 import { Screen, Text, TextField } from "../../components"
@@ -23,6 +23,15 @@ export const MessageScreen = observer(function MessageScreen() {
   const [plainText, setPlainText] = useState("")
   const [encryptedText, setEncryptedText] = useState("")
   const [userPassword, setUserPassword] = useState("")
+  const [action, setAction] = useState<"encrypt" | "decrypt">("encrypt")
+
+  useEffect(() => {
+    if (action === "encrypt") {
+      setEncryptedText(computeEncryptedText(userPassword, plainText))
+    } else {
+      setPlainText(computePlainText(userPassword, encryptedText))
+    }
+  }, [plainText, userPassword, encryptedText])
 
   // Pull in navigation via hook
   // const navigation = useNavigation()
@@ -32,22 +41,22 @@ export const MessageScreen = observer(function MessageScreen() {
         <TextField
           label="Message"
           placeholder="Type or paste your message here"
+          value={plainText}
+          onChangeText={(newPlainText) => {
+            setAction("encrypt")
+            setPlainText(newPlainText)
+          }}
           style={{ flex: 5 }}
           inputStyle={{ height: "100%" }}
           multiline={true}
-          onChangeText={(newPlainText) => {
-            setPlainText(newPlainText)
-            setEncryptedText(computeEncryptedText(userPassword, newPlainText))
-          }}
         />
         <View style={{ flexDirection: "row" }}>
           <TextField
             label="Password"
             placeholder="Password"
             value={userPassword}
-            onChangeText={(newPassword) => {
-              setUserPassword(newPassword)
-              setEncryptedText(computeEncryptedText(newPassword, plainText))
+            onChangeText={(text) => {
+              setUserPassword(text)
             }}
             style={{ flex: 1, marginRight: spacing.tiny }}
             secureTextEntry={true}
@@ -55,7 +64,7 @@ export const MessageScreen = observer(function MessageScreen() {
           <TextField
             label="Cipher"
             placeholder="Cipher"
-            value="AES 256-bit, CTR"
+            value="AES 256-bit"
             style={{ flex: 1, marginLeft: spacing.tiny }}
             editable={false}
           />
@@ -63,33 +72,53 @@ export const MessageScreen = observer(function MessageScreen() {
         <TextField
           label="Encrypted Message"
           placeholder="Your encrypted message"
+          value={encryptedText}
+          onChangeText={(text) => {
+            setAction("decrypt")
+            setEncryptedText(text)
+          }}
           style={{ flex: 5 }}
           inputStyle={{ height: "100%" }}
           multiline={true}
-          value={encryptedText}
         />
       </View>
     </Screen>
   )
 })
 
-const computeEncryptedText = (password: string, text: string): string => {
+const generateKeyFromPassword = (password: string) => {
   const passwordBytes = Buffer.from(password.normalize("NFKC"))
   const saltBytes = Buffer.from("someSaltyo".normalize("NFKC"))
-
   const N = 1024
   const r = 8
   const p = 1
   const dkLen = 32
-
   const key = syncScrypt(passwordBytes, saltBytes, N, r, p, dkLen)
-  // console.log(key)
+  return key
+}
 
-  // aesjs
-  // const text = "Text may be any length you wish, no padding is required."
-  const textBytes = aesjs.utils.utf8.toBytes(text)
+const encryptToBase64 = (key: Uint8Array, plainText: string): string => {
+  const textBytes = aesjs.utils.utf8.toBytes(plainText)
   const aesCtr = new aesjs.ModeOfOperation.ctr(key)
   const encryptedBytes = aesCtr.encrypt(textBytes)
-  // console.log(base64.fromByteArray(encryptedBytes))
-  return base64.fromByteArray(encryptedBytes)
+  const base64String = base64.fromByteArray(encryptedBytes)
+  return base64String
+}
+
+const computeEncryptedText = (password: string, plainText: string): string => {
+  const key = generateKeyFromPassword(password)
+  return encryptToBase64(key, plainText)
+}
+
+const computePlainText = (password: string, base64String: string): string => {
+  try {
+    const key = generateKeyFromPassword(password)
+    const encryptedBytes = base64.toByteArray(base64String)
+    const aesCtr = new aesjs.ModeOfOperation.ctr(key)
+    const decryptedBytes = aesCtr.decrypt(encryptedBytes)
+    const decryptedText = aesjs.utils.utf8.fromBytes(decryptedBytes)
+    return decryptedText
+  } catch (error) {
+    return "error, could not decrypt"
+  }
 }
