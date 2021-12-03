@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react"
 import { observer } from "mobx-react-lite"
 import { View, ViewStyle } from "react-native"
-import { Screen, Text, TextField } from "../../components"
+import { Screen, TextField } from "../../components"
 // import { useNavigation } from "@react-navigation/native"
 // import { useStores } from "../../models"
 import { color, spacing } from "../../theme"
@@ -13,7 +13,6 @@ import { Buffer } from "buffer"
 const ROOT: ViewStyle = {
   backgroundColor: color.background,
   padding: spacing.medium,
-  flex: 1,
 }
 
 export const MessageScreen = observer(function MessageScreen() {
@@ -39,8 +38,8 @@ export const MessageScreen = observer(function MessageScreen() {
   // Pull in navigation via hook
   // const navigation = useNavigation()
   return (
-    <Screen style={ROOT} preset="fixed">
-      <View style={{ flexDirection: "column", height: "100%" }}>
+    <Screen style={ROOT} preset="scroll">
+      <View style={{ marginBottom: spacing.medium }}>
         <TextField
           label="Message (plain text)"
           placeholder="Type or paste your message here"
@@ -49,8 +48,7 @@ export const MessageScreen = observer(function MessageScreen() {
             setAction("encrypt")
             setPlainText(newPlainText)
           }}
-          style={{ flex: 5 }}
-          inputStyle={{ height: "100%" }}
+          inputStyle={{ height: 200 }}
           multiline={true}
         />
         <TextField
@@ -60,7 +58,6 @@ export const MessageScreen = observer(function MessageScreen() {
           onChangeText={(text) => {
             setUserPassword(text)
           }}
-          style={{ flex: 1, marginRight: spacing.tiny }}
           secureTextEntry={true}
         />
         <TextField
@@ -71,8 +68,7 @@ export const MessageScreen = observer(function MessageScreen() {
             setAction("decrypt")
             setEncryptedText(text)
           }}
-          style={{ flex: 5 }}
-          inputStyle={{ height: "100%" }}
+          inputStyle={{ height: 200 }}
           multiline={true}
         />
       </View>
