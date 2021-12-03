@@ -9,13 +9,7 @@ import { useColorScheme } from "react-native"
 import { NavigationContainer, DefaultTheme, DarkTheme } from "@react-navigation/native"
 import { createNativeStackNavigator } from "@react-navigation/native-stack"
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs"
-import {
-  DemoListScreen,
-  DemoScreen,
-  MessageScreen,
-  PasswordsScreen,
-  WelcomeScreen,
-} from "../screens"
+import { MessageScreen, SettingsScreen, PasswordsScreen } from "../screens"
 import { navigationRef } from "./navigation-utilities"
 import { color } from "../theme"
 
@@ -32,7 +26,6 @@ import { color } from "../theme"
  *   https://reactnavigation.org/docs/typescript#type-checking-the-navigator
  */
 export type StackNavigatorParamList = {
-  demoList: undefined
   tabs: undefined
   passwords: undefined
   welcome: undefined
@@ -45,9 +38,8 @@ const Stack = createNativeStackNavigator<StackNavigatorParamList>()
 // Docs: https://reactnavigation.org/docs/bottom-tab-navigator
 export type TabNavigatorParamList = {
   passwords: undefined
+  settings: undefined
   message: undefined
-  welcome: undefined
-  demo: undefined
 }
 const Tab = createBottomTabNavigator<TabNavigatorParamList>()
 
@@ -61,7 +53,7 @@ function Tabs() {
       }}
     >
       <Tab.Screen name="passwords" component={PasswordsScreen} options={{ title: "Passwords" }} />
-      <Tab.Screen name="welcome" component={WelcomeScreen} options={{ title: "Settings" }} />
+      <Tab.Screen name="settings" component={SettingsScreen} options={{ title: "Settings" }} />
       <Tab.Screen name="message" component={MessageScreen} options={{ title: "Message" }} />
     </Tab.Navigator>
   )
@@ -76,7 +68,6 @@ const AppStack = () => {
       initialRouteName="tabs"
     >
       <Stack.Screen name="tabs" component={Tabs} options={{ headerShown: false }} />
-      <Stack.Screen name="demoList" component={DemoListScreen} />
     </Stack.Navigator>
   )
 }

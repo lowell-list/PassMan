@@ -5,3 +5,4 @@ export * from "./error/error-boundary"
 // export other screens here
 export * from "./passwords/passwords-screen"
 export * from "./message/message-screen"
+export * from "./settings/settings-screen"
