@@ -1,14 +1,14 @@
 import React, { useEffect } from "react"
 import { observer } from "mobx-react-lite"
-import { ViewStyle } from "react-native"
+import { View, ViewStyle } from "react-native"
 import { Screen, Text } from "../../components"
 // import { useNavigation } from "@react-navigation/native"
 import { useStores } from "../../models"
-import { color } from "../../theme"
+import { color, spacing } from "../../theme"
 
 const ROOT: ViewStyle = {
   backgroundColor: color.background,
-  flex: 1,
+  padding: spacing.medium,
 }
 
 export const PasswordsScreen = observer(function PasswordsScreen() {
@@ -31,9 +31,13 @@ export const PasswordsScreen = observer(function PasswordsScreen() {
 
   return (
     <Screen style={ROOT} preset="scroll">
-      <Text preset="header" tx="passwordsScreen.masterPassword" />
-      <Text>{`There are ${passwordItemCount} password item(s).`}</Text>
-      {passwordItems}
+      <Text preset="header" text="Passwords" />
+      <Text>Password Manager.</Text>
+
+      <View style={{ marginTop: spacing.medium }}>
+        <Text>{`There are ${passwordItemCount} password item(s).`}</Text>
+        {passwordItems}
+      </View>
     </Screen>
   )
 })

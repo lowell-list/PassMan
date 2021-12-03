@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react"
 import { observer } from "mobx-react-lite"
 import { View, ViewStyle } from "react-native"
-import { Screen, TextField } from "../../components"
+import { Screen, Text, TextField } from "../../components"
 // import { useNavigation } from "@react-navigation/native"
 // import { useStores } from "../../models"
 import { color, spacing } from "../../theme"
@@ -39,7 +39,10 @@ export const MessageScreen = observer(function MessageScreen() {
   // const navigation = useNavigation()
   return (
     <Screen style={ROOT} preset="scroll">
-      <View style={{ marginBottom: spacing.medium }}>
+      <Text preset="header" text="Message" />
+      <Text>Encrypt or decrypt a small message with a password.</Text>
+
+      <View style={{ marginTop: spacing.medium, marginBottom: spacing.medium }}>
         <TextField
           label="Message (plain text)"
           placeholder="Type or paste your message here"
