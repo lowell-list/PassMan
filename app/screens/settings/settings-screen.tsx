@@ -1,7 +1,7 @@
 import React from "react"
 import { observer } from "mobx-react-lite"
 import { View, ViewStyle } from "react-native"
-import { Button, Screen, Text, TextField } from "../../components"
+import { Screen, Text, TextField } from "../../components"
 // import { useNavigation } from "@react-navigation/native"
 // import { useStores } from "../../models"
 import { color, spacing } from "../../theme"
@@ -27,7 +27,7 @@ export const SettingsScreen = observer(function SettingsScreen() {
         <TextField label="URL" placeholder="URL" />
         <TextField label="Key" placeholder="Key" />
         <TextField label="User name" placeholder="User name" />
-        <Text text="Connected!" />
+        <Text text="Status Text here: Connecting... Connected!" />
       </View>
     </Screen>
   )
