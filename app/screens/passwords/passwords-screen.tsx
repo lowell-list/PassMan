@@ -32,7 +32,7 @@ export const PasswordsScreen = observer(function PasswordsScreen() {
   return (
     <Screen style={ROOT} preset="scroll">
       <Text preset="header" text="Passwords" />
-      <Text>Password Manager.</Text>
+      <Text>Browse, copy, and edit your passwords.</Text>
 
       <View style={{ marginTop: spacing.medium }}>
         <Text>{`There are ${passwordItemCount} password item(s).`}</Text>

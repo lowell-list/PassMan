@@ -38,8 +38,8 @@ const Stack = createNativeStackNavigator<StackNavigatorParamList>()
 // Docs: https://reactnavigation.org/docs/bottom-tab-navigator
 export type TabNavigatorParamList = {
   passwords: undefined
-  settings: undefined
   message: undefined
+  settings: undefined
 }
 const Tab = createBottomTabNavigator<TabNavigatorParamList>()
 
@@ -53,8 +53,8 @@ function Tabs() {
       }}
     >
       <Tab.Screen name="passwords" component={PasswordsScreen} options={{ title: "Passwords" }} />
-      <Tab.Screen name="settings" component={SettingsScreen} options={{ title: "Settings" }} />
       <Tab.Screen name="message" component={MessageScreen} options={{ title: "Message" }} />
+      <Tab.Screen name="settings" component={SettingsScreen} options={{ title: "Settings" }} />
     </Tab.Navigator>
   )
 }

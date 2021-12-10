@@ -23,17 +23,11 @@ export const SettingsScreen = observer(function SettingsScreen() {
       <Text>All app settings.</Text>
 
       <View style={{ marginTop: spacing.medium }}>
-        <Text preset="bold" text="GitHub Connection" />
-        <TextField label="Username" placeholder="Username" />
-        <TextField label="Repo name" placeholder="Repo name" />
-        <TextField label="Branch name" placeholder="Branch name" />
-        <TextField label="Access key" placeholder="Access key" />
-        <Button
-          text="Connect"
-          onPress={() => {
-            console.log("connect")
-          }}
-        />
+        <Text preset="bold" text="PassMan Server Connection" />
+        <TextField label="URL" placeholder="URL" />
+        <TextField label="Key" placeholder="Key" />
+        <TextField label="User name" placeholder="User name" />
+        <Text text="Connected!" />
       </View>
     </Screen>
   )
