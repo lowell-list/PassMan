@@ -43,6 +43,7 @@
     "base64-js": "^1.5.1",
     "buffer": "^6.0.3",
     "expo": "40.0.1",
+    "expo-clipboard": "~1.0.1",
     "expo-linear-gradient": "^9.2.0",
     "expo-localization": "9.1.0",
     "expo-status-bar": "~1.0.4",

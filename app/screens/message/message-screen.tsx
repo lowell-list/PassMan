@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react"
 import { observer } from "mobx-react-lite"
 import { View, ViewStyle } from "react-native"
-import { Screen, Text, TextField } from "../../components"
+import { Button, Screen, Text, TextField } from "../../components"
 // import { useNavigation } from "@react-navigation/native"
 // import { useStores } from "../../models"
 import { color, spacing } from "../../theme"
@@ -48,8 +48,9 @@ export const MessageScreen = observer(function MessageScreen() {
             setAction("encrypt")
             setPlainText(newPlainText)
           }}
-          inputStyle={{ height: 200 }}
+          inputStyle={{ height: spacing.huge * 3 }}
           multiline={true}
+          copyButton={true}
         />
         <TextField
           label="Password"
@@ -58,6 +59,7 @@ export const MessageScreen = observer(function MessageScreen() {
           onChangeText={(text) => {
             setUserPassword(text)
           }}
+          style={{ marginTop: spacing.small }}
           secureTextEntry={true}
         />
         <TextField
@@ -68,8 +70,10 @@ export const MessageScreen = observer(function MessageScreen() {
             setAction("decrypt")
             setEncryptedText(text)
           }}
-          inputStyle={{ height: 200 }}
+          style={{ marginTop: spacing.small }}
+          inputStyle={{ height: spacing.huge * 3 }}
           multiline={true}
+          copyButton={true}
         />
       </View>
     </Screen>

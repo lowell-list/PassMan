@@ -3,19 +3,24 @@ import { StyleProp, TextInput, TextInputProps, TextStyle, View, ViewStyle } from
 import { color, typography, spacing } from "../../theme"
 import { translate, TxKeyPath } from "../../i18n"
 import { Text } from "../text/text"
+import { Button } from "../button/button"
+import Clipboard from "expo-clipboard"
 
 // the base styling for the container
 const CONTAINER: ViewStyle = {
-  paddingVertical: spacing.small,
+  // paddingBottom: spacing.small,
 }
 
 // the base styling for the TextInput
 const INPUT: TextStyle = {
+  padding: spacing.small,
+  paddingTop: spacing.small,
   fontFamily: typography.primary,
   color: color.text,
   minHeight: 44,
   fontSize: 18,
   backgroundColor: color.palette.offWhite,
+  textAlignVertical: "top",
 }
 
 // currently we have no presets, but that changes quickly when you build your app.
@@ -55,6 +60,11 @@ export interface TextFieldProps extends TextInputProps {
   inputStyle?: StyleProp<TextStyle>
 
   /**
+   * If true, include a Copy to Clipboard button
+   */
+  copyButton?: boolean
+
+  /**
    * Various look & feels.
    */
   preset?: keyof typeof PRESETS
@@ -74,6 +84,7 @@ export function TextField(props: TextFieldProps) {
     preset = "default",
     style: styleOverride,
     inputStyle: inputStyleOverride,
+    copyButton = false,
     forwardedRef,
     ...rest
   } = props
@@ -81,6 +92,19 @@ export function TextField(props: TextFieldProps) {
   const containerStyles = [CONTAINER, PRESETS[preset], styleOverride]
   const inputStyles = [INPUT, inputStyleOverride]
   const actualPlaceholder = placeholderTx ? translate(placeholderTx) : placeholder
+
+  const [showCopied, setShowCopied] = React.useState(false)
+
+  // timer for "Copied!" text
+  React.useEffect(() => {
+    if (!showCopied) {
+      return () => {}
+    }
+    const timerValue = setTimeout(() => setShowCopied(false), 2000)
+    return () => {
+      clearTimeout(timerValue)
+    }
+  }, [showCopied])
 
   return (
     <View style={containerStyles}>
@@ -93,6 +117,17 @@ export function TextField(props: TextFieldProps) {
         style={inputStyles}
         ref={forwardedRef}
       />
+      {copyButton && (
+        <Button
+          preset="link"
+          text={showCopied ? "Copied!" : "Copy"}
+          style={{ position: "absolute", right: spacing.small, bottom: spacing.small }}
+          onPress={() => {
+            Clipboard.setString(props.value || "")
+            setShowCopied(true)
+          }}
+        />
+      )}
     </View>
   )
 }
