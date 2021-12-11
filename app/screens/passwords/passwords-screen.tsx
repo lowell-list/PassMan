@@ -34,7 +34,7 @@ export const PasswordsScreen = observer(function PasswordsScreen() {
       <Text preset="header" text="Passwords" />
       <Text>Browse, copy, and edit your passwords.</Text>
 
-      <View style={{ marginTop: spacing.medium }}>
+      <View style={{ marginTop: spacing.small }}>
         <Text>{`There are ${passwordItemCount} password item(s).`}</Text>
         {passwordItems}
       </View>

@@ -39,7 +39,7 @@ export const MessageScreen = observer(function MessageScreen() {
       <Text preset="header" text="Message" />
       <Text>Encrypt or decrypt a small message with a password.</Text>
 
-      <View style={{ marginTop: spacing.medium, marginBottom: spacing.medium }}>
+      <View style={{ marginTop: spacing.medium }}>
         <TextField
           label="Message (plain text)"
           placeholder="Type or paste your message here"

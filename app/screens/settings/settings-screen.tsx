@@ -24,10 +24,13 @@ export const SettingsScreen = observer(function SettingsScreen() {
 
       <View style={{ marginTop: spacing.medium }}>
         <Text preset="bold" text="PassMan Server Connection" />
-        <TextField label="URL" placeholder="URL" />
-        <TextField label="Key" placeholder="Key" />
-        <TextField label="User name" placeholder="User name" />
-        <Text text="Status Text here: Connecting... Connected!" />
+        <TextField label="URL" placeholder="URL" style={{ marginTop: spacing.small }} />
+        <TextField label="Key" placeholder="Key" style={{ marginTop: spacing.small }} />
+        <TextField label="User name" placeholder="User name" style={{ marginTop: spacing.small }} />
+        <Text
+          style={{ marginTop: spacing.small }}
+          text="Status Text here: Connecting... Connected!"
+        />
       </View>
     </Screen>
   )
