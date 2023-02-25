@@ -5,6 +5,8 @@
 Create a personal password manager that can work on desktop, mobile, and web.
 Password data will be encrypted and stored in a personal private GitHub repo.
 
+CHANGE: use NestJS BE server instead of a direct GitHub connection
+
 ## Data
 
 App will need:
